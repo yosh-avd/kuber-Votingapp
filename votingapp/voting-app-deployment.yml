@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: votingapp-deployment
+  labels: 
+   author: samba
+   type: commando
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: votingapp
+  template:
+    metadata:
+      name: votingapp-pod
+      labels:
+        name: votingapp
+    spec:
+      containers:
+        - name: votingapp
+          image: dockersamples/examplevotingapp_worker
+...

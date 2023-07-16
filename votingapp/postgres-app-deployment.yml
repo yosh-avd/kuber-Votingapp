@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgresapp-deployment
+  labels: 
+   author: samba4
+   type: commando4
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: postgresapp
+  template:
+    metadata:
+      name: postgres-pod
+      labels:
+        name: postgresapp
+    spec:
+      containers:
+        - name: mypostgres
+          image: postgres
+          env:
+            - name: POSTGRES_PASSWORD
+              value: test123
+            - name: POSTGRES_USER
+              value: testuser
+            - name: POSTGRES_DB
+              value: mydb
+...
+

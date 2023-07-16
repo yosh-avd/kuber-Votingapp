@@ -1,0 +1,24 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: votingapp-deployment-result
+  labels: 
+   author: samba2
+   type: commando2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: resultapp
+  template:
+    metadata:
+      name: resultapp-pod
+      labels:
+        name: resultapp
+    spec:
+      containers:
+        - name: myresultapp
+          image: dockersamples/examplevotingapp_result
+
+...
